@@ -10,3 +10,4 @@ class kuali {
 }
 
 include kuali
+include puppet-java
