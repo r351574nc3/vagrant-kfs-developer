@@ -1,8 +1,8 @@
-class kfs {
+class kuali {
 	user { "kuali":
-		groups => 'kuali',
-		commend => 'This user was created by Puppet',
-		ensure => present,
+		groups       => 'kuali',
+		comment      => 'This user was created by Puppet',
+		ensure       => present,
 		managed_home => true
 	}
 }
