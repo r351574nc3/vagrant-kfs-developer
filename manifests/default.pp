@@ -36,7 +36,7 @@ class kuali {
     exec { "svn-checkout-kfs" :
 	    command  => "svn co https://svn.kuali.org/repos/kfs/trunk ${workspace}/kfs-5.0",
 	    creates  => "${workspace}/kfs-5.0",
-	    requires => File["${workspace}"]
+	    require  => File["${workspace}"]
     }
 }
 
