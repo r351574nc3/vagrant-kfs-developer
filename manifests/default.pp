@@ -39,13 +39,13 @@ class kuali {
 	    require  => File["${workspace}"]
     }
 
-    exec { "svn-checkout-kfs-cfg-dbs" :
+    exec { "svn-checkout-impex" :
 	    command  => "svn co https://svn.kuali.org/repos/foundation/db-utils/branches/comment-extraction ${workspace}/kul-cfg-dbs",
 	    creates  => "${workspace}/kul-cfg-dbs",
 	    require  => File["${workspace}"]
     }
 
-    exec { "svn-checkout-impex" :
+    exec { "svn-checkout-kfs-cfg-dbs" :
 	    command  => "svn co http://svn.kuali.org/repos/kfs/legacy/cfg-dbs/branches/release-5-0/ ${workspace}/kfs-cfg-dbs",
 	    creates  => "${workspace}/kfs-cfg-dbs",
 	    require  => File["${workspace}"]
