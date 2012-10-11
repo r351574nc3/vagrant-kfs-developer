@@ -29,7 +29,7 @@ class kuali {
 
     file { "${workspace}" : 
         ensure  => directory,
-        owner   => "kuali"
+        owner   => "kuali",
         notify  => Exec['svn-checkout-kfs']
     }		
 
