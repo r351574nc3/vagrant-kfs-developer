@@ -27,15 +27,16 @@ class kuali {
 		ensure => installed
 	}
 
-    file { $workspace: 
+    file { "${workspace}" : 
         ensure  => directory,
-        require => Exec["svn-checkout-kfs"],
+        owner   => "kuali"
+        notify  => Exec['svn-checkout-kfs']
     }		
 
-    exec { "svn-checkout" :
-	    command => "svn co https://svn.kuali.org/repos/kfs/trunk ${workspace}/kfs-5.0",
-	    creates => "${workspace}/kfs-5.0",
-	    refreshonly => true,
+    exec { "svn-checkout-kfs" :
+	    command  => "svn co https://svn.kuali.org/repos/kfs/trunk ${workspace}/kfs-5.0",
+	    creates  => "${workspace}/kfs-5.0",
+	    requires => File["${workspace}"]
     }
 }
 
