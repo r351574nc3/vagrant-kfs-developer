@@ -1,4 +1,7 @@
 class kuali {
+	$home      = "/home/kuali"
+	$workspace = "${home}/workspace"
+
     group { "eclipse":
         ensure => present,
     }
@@ -12,6 +15,24 @@ class kuali {
 		managehome => true
 	}
 
+	package { "subversion" : 
+		ensure => installed
+	}
+
+	package { "tomcat" :
+		ensure => installed
+	}
+
+    file { $workspace: 
+        ensure  => directory,
+        require => Exec["svn-checkout-kfs"],
+    }	
+
+    exec { "svn-checkout" :
+	    command => "svn co https://svn.kuali.org/repos/kfs/trunk ${workspace}/kfs-5.0",
+	    unless  => "[ -d ${workspace}/kfs-5.0 ]",
+	    refreshonly => true,
+    }
 }
 
 include kuali
