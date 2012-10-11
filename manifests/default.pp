@@ -26,11 +26,11 @@ class kuali {
     file { $workspace: 
         ensure  => directory,
         require => Exec["svn-checkout-kfs"],
-    }	
+    }		
 
     exec { "svn-checkout" :
 	    command => "svn co https://svn.kuali.org/repos/kfs/trunk ${workspace}/kfs-5.0",
-	    unless  => "[ -d ${workspace}/kfs-5.0 ]",
+	    creates => "${workspace}/kfs-5.0",
 	    refreshonly => true,
     }
 }
