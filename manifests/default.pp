@@ -10,4 +10,5 @@ class kuali {
 }
 
 include kuali
-include puppet-java
+include java
+include eclipse
