@@ -32,8 +32,9 @@ class kuali {
 	}
 
 	service { "mysql" :
-		ensure => running,
-		enable => true
+		ensure  => running,
+		enable  => true,
+		require => Package["mysql-server"]
 	}
 
     file { "${workspace}" : 
