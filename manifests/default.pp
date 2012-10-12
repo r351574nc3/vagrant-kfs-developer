@@ -59,6 +59,51 @@ class kuali {
         unless  => "[ `stat -c %U ${workspace}` == kuali ]",
         require => Exec['svn-checkout-kfs-cfg-dbs'],
     }
+
+
+    archive::download { "apache-maven-3.0.4-bin.tar.gz":
+	    ensure        => present,
+	    url           => "http://apache.osuosl.org/maven/maven-3/3.0.4/binaries/apache-maven-3.0.4-bin.tar.gz",
+	    checksum      => "e513740978238cb9e4d482103751f6b7"
+    }
+
+    archive::extract { "apache-maven-3.0.4":
+        ensure     => present,
+        target     => "/usr/java",
+        require    => Archive::Download["apache-maven-3.0.4-bin.tar.gz"]
+    }
+
+    file { "/usr/java/apache-maven" :
+    	ensure => link,
+    	target => "/usr/java/apache-maven-3.0.4"
+    }
+
+    file { "/usr/bin/mvn" :
+    	ensure => link,
+    	target => "/usr/java/apache-maven/bin/mvn"
+    }
+
+    archive::download { "apache-ant-1.8.4-bin.tar.gz":
+	    ensure        => present,
+	    url           => "http://apache.osuosl.org//ant/binaries/apache-ant-1.8.4-bin.tar.gz",
+	    checksum      => "e513740978238cb9e4d482103751f6b7"
+    }
+
+    archive::extract { "apache-ant-1.8.4" :
+        ensure     => present,
+        target     => "/usr/java",
+        require    => Archive::Download["apache-ant-1.8.4-bin.tar.gz]
+    }
+
+    file { "/usr/java/apache-ant" :
+    	ensure => link,
+    	target => "/usr/java/apache-ant-1.8.4"
+    }
+
+    file { "/usr/bin/ant" :
+    	ensure => link,
+    	target => "/usr/java/apache-ant/bin/ant"
+    }
 }
 
 include kuali
