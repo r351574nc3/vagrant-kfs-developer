@@ -27,12 +27,13 @@ class kuali {
 		ensure => installed
 	}
 
-	package { "mysql-server"
+	package { "mysql-server" :
 		ensure => installed
 	}
 
 	service { "mysql" :
-		ensure => running
+		ensure => running,
+		enable => true
 	}
 
     file { "${workspace}" : 
