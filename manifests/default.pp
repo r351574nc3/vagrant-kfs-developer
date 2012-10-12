@@ -73,7 +73,7 @@ class kuali {
     archive::download { "apache-maven-3.0.4-bin.tar.gz":
 	    ensure        => present,
 	    url           => "http://apache.osuosl.org/maven/maven-3/3.0.4/binaries/apache-maven-3.0.4-bin.tar.gz",
-	    checksum      => "e513740978238cb9e4d482103751f6b7"
+	    digest_string => "e513740978238cb9e4d482103751f6b7"
     }
 
     archive::extract { "apache-maven-3.0.4":
@@ -95,7 +95,7 @@ class kuali {
     archive::download { "apache-ant-1.8.4-bin.tar.gz":
 	    ensure        => present,
 	    url           => "http://apache.osuosl.org//ant/binaries/apache-ant-1.8.4-bin.tar.gz",
-	    checksum      => "f5975145d90efbbafdcabece600f716b"
+	    digest_string => "f5975145d90efbbafdcabece600f716b"
     }
 
     archive::extract { "apache-ant-1.8.4" :
