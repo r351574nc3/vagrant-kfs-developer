@@ -101,7 +101,7 @@ class kuali {
     archive::extract { "apache-ant-1.8.4" :
         ensure     => present,
         target     => "/usr/java",
-        require    => Archive::Download["apache-ant-1.8.4-bin.tar.gz]
+        require    => Archive::Download["apache-ant-1.8.4-bin.tar.gz"]
     }
 
     file { "/usr/java/apache-ant" :
