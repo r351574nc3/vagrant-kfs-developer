@@ -95,7 +95,7 @@ class kuali {
     archive::download { "apache-ant-1.8.4-bin.tar.gz":
 	    ensure        => present,
 	    url           => "http://apache.osuosl.org//ant/binaries/apache-ant-1.8.4-bin.tar.gz",
-	    checksum      => "e513740978238cb9e4d482103751f6b7"
+	    checksum      => "f5975145d90efbbafdcabece600f716b"
     }
 
     archive::extract { "apache-ant-1.8.4" :
