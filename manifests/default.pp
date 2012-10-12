@@ -13,7 +13,7 @@ class kuali {
 	user { "kuali":
 		groups     => 'kuali',
 		password   => ['kuali', 'wheel', 'admin', 'eclipse'],
-		comment    => 'This user was created by Puppet',
+		comment    => 'kuali',
 		ensure     => present,
 		provider   => 'useradd',
 		managehome => true
@@ -49,6 +49,12 @@ class kuali {
 	    command  => "svn co http://svn.kuali.org/repos/kfs/legacy/cfg-dbs/branches/release-5-0/ ${workspace}/kfs-cfg-dbs",
 	    creates  => "${workspace}/kfs-cfg-dbs",
 	    require  => File["${workspace}"]
+    }
+
+    exec { "chown-workspace" :
+        command => "chown -R kuali:kuali ${workspace}",
+        unless  => "[ `stat -c %U ${workspace}` == kuali ]",
+        require => Exec['svn-checkout-kfs-cfg-dbs'],
     }
 }
 
