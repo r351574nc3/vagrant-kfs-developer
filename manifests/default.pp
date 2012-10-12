@@ -77,7 +77,7 @@ class kuali {
 	    digest_string => "e513740978238cb9e4d482103751f6b7"
     }
 
-    archive::extract { "apache-maven-3.0.4":
+    archive::extract { "apache-maven-3.0.4-bin":
         ensure     => present,
         target     => "/usr/java",
         require    => Archive::Download["apache-maven-3.0.4-bin.tar.gz"]
@@ -99,7 +99,7 @@ class kuali {
 	    digest_string => "f5975145d90efbbafdcabece600f716b"
     }
 
-    archive::extract { "apache-ant-1.8.4" :
+    archive::extract { "apache-ant-1.8.4-bin" :
         ensure     => present,
         target     => "/usr/java",
         require    => Archive::Download["apache-ant-1.8.4-bin.tar.gz"]
