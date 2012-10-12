@@ -27,6 +27,14 @@ class kuali {
 		ensure => installed
 	}
 
+	package { "mysql-server"
+		ensure => installed
+	}
+
+	service { "mysql" :
+		ensure => running
+	}
+
     file { "${workspace}" : 
         ensure  => directory,
         owner   => "kuali",
