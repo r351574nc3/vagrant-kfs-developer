@@ -117,7 +117,7 @@ class kuali {
 
     exec { "cleanup-usr-src" :
         command => "rm /usr/src/*.tar.gz",
-        require => Archive::Extract["apache-ant-1.8.4-bin"]
+        require => Archive::Extract["apache-ant-1.8.4-bin", "apache-maven-3.0.4-bin"]
     }
 }
 
