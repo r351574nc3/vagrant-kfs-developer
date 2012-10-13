@@ -1,3 +1,6 @@
+include java
+include eclipse 
+
 class kuali {
 	$home      = "/home/kuali"
 	$workspace = "${home}/workspace"
@@ -123,5 +126,3 @@ class kuali {
 }
 
 include kuali
-include java
-include eclipse
