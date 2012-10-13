@@ -116,10 +116,10 @@ class kuali {
     	target => "/usr/java/apache-ant/bin/ant"
     }
 
-    exec { "cleanup-usr-src" :
-        command => "rm /usr/src/*.tar.gz",
-        require => Archive::Extract["apache-ant-1.8.4-bin"]
-    }
+#    exec { "cleanup-usr-src" :
+#        command => "rm /usr/src/*.tar.gz",
+#        require => Archive::Extract["apache-ant-1.8.4-bin"]
+#    }
 }
 
 include kuali
