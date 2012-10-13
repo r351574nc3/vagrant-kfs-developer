@@ -96,7 +96,8 @@ class kuali {
     archive::download { "apache-ant-1.8.4-bin.tar.gz":
 	    ensure        => present,
 	    url           => "http://apache.osuosl.org//ant/binaries/apache-ant-1.8.4-bin.tar.gz",
-	    digest_string => "f5975145d90efbbafdcabece600f716b"
+	    digest_string => "f5975145d90efbbafdcabece600f716b",
+	    require       => Archive:Extract["apache-maven-3.0.4-bin"]
     }
 
     archive::extract { "apache-ant-1.8.4-bin" :
@@ -116,7 +117,8 @@ class kuali {
     }
 
     exec { "cleanup-usr-src" :
-        command => "rm /usr/src/*.tar.gz"
+        command => "rm /usr/src/*.tar.gz",
+        require => Archive::Extract["apache-ant-1.8.4-bin"]
     }
 }
 
