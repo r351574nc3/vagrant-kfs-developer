@@ -97,7 +97,7 @@ class kuali {
 	    ensure        => present,
 	    url           => "http://apache.osuosl.org//ant/binaries/apache-ant-1.8.4-bin.tar.gz",
 	    digest_string => "f5975145d90efbbafdcabece600f716b",
-	    require       => Archive:Extract["apache-maven-3.0.4-bin"]
+	    require       => Archive::Extract["apache-maven-3.0.4-bin"]
     }
 
     archive::extract { "apache-ant-1.8.4-bin" :
