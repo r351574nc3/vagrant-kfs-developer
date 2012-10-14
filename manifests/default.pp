@@ -1,3 +1,3 @@
 include java
 include eclipse 
-include kfs-developer
+include kfsdeveloper
