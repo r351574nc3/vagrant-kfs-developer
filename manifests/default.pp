@@ -121,7 +121,7 @@ class kuali {
     }
 
     file { 'MessageBuilder.java':
-        path    => '/home/kuali/workspace/kfs/work/src/org/kuali/kfs/sys/',
+        path    => '/home/kuali/workspace/kfs/work/src/org/kuali/kfs/sys/MessageBuilder.java',
         owner   => 'kuali',
         group   => 'kuali',
         ensure  => file,
