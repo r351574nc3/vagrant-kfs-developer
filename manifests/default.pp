@@ -5,6 +5,7 @@ class kuali {
 	$home      = "/home/kuali"
 	$workspace = "${home}/workspace"
     $username  = "kuldemo"
+    $schema    = $username
     $password  = "kuldemo"
 
     Exec {
