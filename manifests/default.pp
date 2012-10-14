@@ -120,6 +120,14 @@ class kuali {
     	target => "/usr/java/apache-ant/bin/ant"
     }
 
+    file { "/etc/init.d/mule":
+        ensure => present,
+        owner  => root,
+        group  => root,
+        mode   => 0755,
+        content => template('mule/mule.init.erb'),
+        require => File[$basedir],
+    }
 #    exec { "cleanup-usr-src" :
 #        command => "rm /usr/src/*.tar.gz",
 #        require => Archive::Extract["apache-ant-1.8.4-bin"]
