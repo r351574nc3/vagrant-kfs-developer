@@ -36,11 +36,19 @@ class kuali {
 	}
 
 	service { "mysqld" :
-		ensure  => running,
-		enable  => true,
-		require => Package["mysql-server"]
+		ensure     => running,
+		enable     => true,
+		require    => Package["mysql-server"],
+        subscribe  => File['my.cnf']
 	}
 
+    file { 'my.cnf':
+        path    => '/etc/my.cnf',
+        ensure  => file,
+        require => Package['mysql-server'],
+        source  => "file/my.cnf",
+    }
+    
     file { "${workspace}" : 
         ensure  => directory,
         owner   => "kuali",
@@ -52,6 +60,26 @@ class kuali {
 	    creates  => "${workspace}/kfs-5.0",
 	    timeout  => "720",
 	    require  => File["${workspace}"]
+    }
+
+    file { 'my.cnf':
+        path    => '/etc/my.cnf',
+        ensure  => file,
+        require => Package['mysql-server'],
+        source  => "files/my.cnf",
+    }
+
+    file { 'kfs' :
+        path    => '/home/kuali/workspace/kfs'
+        ensure  => link,
+        require => Exec['svn-checkout-kfs']
+    }
+
+    file { 'MessageBuilder.java':
+        path    => '/home/kuali/workspace/kfs/work/src/org/kuali/kfs/sys/',
+        ensure  => file,
+        require => File['kfs'],
+        source  => "files/MessageBuilder.java",
     }
 
     exec { "svn-checkout-impex" :
