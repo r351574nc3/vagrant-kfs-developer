@@ -126,7 +126,7 @@ class kuali {
         group   => 'kuali',
         ensure  => file,
         require => File['kfs'],
-        source  => "files/MessageBuilder.java",
+        source  => "MessageBuilder.java",
     }
 
     exec { "svn-checkout-impex" :
