@@ -49,7 +49,7 @@ class kuali {
         path    => '/etc/my.cnf',
         ensure  => file,
         require => Package['mysql-server'],
-        source  => "file/my.cnf",
+        source  => "files/my.cnf",
         notify  => Archive::Download["apache-maven-3.0.4-bin.tar.gz"]
     }
     
@@ -126,7 +126,7 @@ class kuali {
         group   => 'kuali',
         ensure  => file,
         require => File['kfs'],
-        source  => "MessageBuilder.java",
+        source  => "files/MessageBuilder.java",
     }
 
     exec { "svn-checkout-impex" :
