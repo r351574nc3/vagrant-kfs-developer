@@ -27,7 +27,8 @@ class kuali {
 	}
 
 	package { "tomcat" :
-		ensure => installed
+		ensure  => installed,
+        require => Package["glibc.i686"]
 	}
 
 	package { "mysql-server" :
@@ -54,7 +55,7 @@ class kuali {
     }
 
     exec { "svn-checkout-impex" :
-	    command  => "svn co https://svn.kuali.org/repos/foundation/db-utils/branches/comment-extraction ${workspace}/kul-cfg-dbs",
+	    command  => "svn co https://svn.kuali.org/repos/foundation/db-utils/branches/clover-integration ${workspace}/kul-cfg-dbs",
 	    creates  => "${workspace}/kul-cfg-dbs",
 	    timeout  => "720",
 	    require  => File["${workspace}"]
